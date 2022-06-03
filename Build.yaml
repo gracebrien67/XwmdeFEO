@@ -15,10 +15,7 @@ jobs:
     timeout-minutes: 60
 
     steps:
-      - name: Checkout
         uses: actions/checkout@v2
-
-      - name: Copy CI gradle.properties
         run: mkdir -p ~/.gradle ; cp .github/ci-gradle.properties ~/.gradle/gradle.properties        
 
       - name: Set up JDK 11
@@ -65,8 +62,6 @@ jobs:
           name: build-reports
           path: app/build/reports
 
-  androidTest:
-    needs: build
     runs-on: macOS-latest # enables hardware acceleration in the virtual machine
     timeout-minutes: 45
     strategy:
